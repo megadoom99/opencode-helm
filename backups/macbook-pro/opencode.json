@@ -1,0 +1,115 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "crawl4ai": {
+      "type": "local",
+      "command": [
+        "/opt/homebrew/bin/node",
+        "/Users/andreicebotari/Downloads/OpenCodeProjects/crawl4ai-mcp.js"
+      ],
+      "enabled": true,
+      "environment": {
+        "PATH": "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin",
+        "HOME": "/Users/andreicebotari"
+      }
+    },
+    "github": {
+      "type": "local",
+      "command": [
+        "/opt/homebrew/bin/npx",
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "enabled": true,
+      "environment": {
+        "PATH": "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin",
+        "HOME": "/Users/andreicebotari",
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "REDACTED"
+      }
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "enabled": true,
+      "description": "Fetches latest docs for React, Next.js, Tailwind, etc.",
+      "headers": {
+        "Authorization": "REDACTED"
+      }
+    },
+    "searxng": {
+      "type": "local",
+      "command": [
+        "/opt/homebrew/bin/npx",
+        "-y",
+        "mcp-searxng"
+      ],
+      "enabled": true,
+      "environment": {
+        "PATH": "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin",
+        "HOME": "/Users/andreicebotari",
+        "SEARXNG_URL": "http://localhost:9999"
+      }
+    },
+    "filesystem": {
+      "type": "local",
+      "command": [
+        "/opt/homebrew/bin/npx",
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/andreicebotari/Downloads/OpenCodeProjects"
+      ],
+      "enabled": true,
+      "environment": {
+        "PATH": "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin",
+        "HOME": "/Users/andreicebotari"
+      }
+    },
+    "postgres": {
+      "type": "local",
+      "command": [
+        "/opt/homebrew/bin/npx",
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://localhost:5432/mydb"
+      ],
+      "enabled": false,
+      "environment": {
+        "PATH": "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin",
+        "HOME": "/Users/andreicebotari"
+      }
+    },
+    "sequential-thinking": {
+      "type": "local",
+      "command": [
+        "/opt/homebrew/bin/npx",
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "enabled": true,
+      "environment": {
+        "PATH": "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin",
+        "HOME": "/Users/andreicebotari"
+      }
+    },
+    "socraticode": {
+      "type": "local",
+      "command": ["/opt/homebrew/bin/npx", "-y", "socraticode"],
+      "enabled": true,
+      "environment": {
+        "PATH": "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin",
+        "HOME": "/Users/andreicebotari"
+      }
+    }
+  },
+  "shell": "/bin/zsh",
+  "plugin": ["./plugins/impact-watcher.ts"],
+  "lsp": true,
+  "tools": {
+    "codebase_*": true,
+    "socraticode_*": true,
+    "impact_check": true
+  },
+  "instructions": [
+    "/Users/andreicebotari/.config/opencode/impact-context.md"
+  ]
+}
