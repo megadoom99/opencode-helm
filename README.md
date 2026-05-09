@@ -60,6 +60,8 @@ The installer checks for these and warns if any are missing.
 | **searxng** | Privacy-respecting web search |
 | **filesystem** | Read/write/list file operations |
 | **sequential-thinking** | Multi-step reasoning for complex problems |
+| **context7** | Remote docs lookup for libraries and frameworks (set `CONTEXT7_API_KEY` env var) |
+| **postgres** | PostgreSQL database operations — disabled by default, enable + update connection string as needed |
 
 All local MCPs are auto-configured with correct `PATH` and `HOME` environment variables so they work with OpenCode's desktop app.
 

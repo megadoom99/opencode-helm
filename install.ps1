@@ -157,6 +157,14 @@ if (!config.mcp['sequential-thinking']) {
     config.mcp['sequential-thinking'] = { type: 'local', command: [npxBin, '-y', '@modelcontextprotocol/server-sequential-thinking'], enabled: true };
 }
 
+if (!config.mcp.context7) {
+    config.mcp.context7 = { type: 'remote', url: 'https://mcp.context7.com/mcp', enabled: true, description: 'Fetches latest docs for libraries and frameworks' };
+}
+
+if (!config.mcp.postgres) {
+    config.mcp.postgres = { type: 'local', command: [npxBin, '-y', '@modelcontextprotocol/server-postgres', 'postgresql://localhost:5432/mydb'], enabled: false };
+}
+
 const defaultEnv = {
     PATH: [npmDir, 'C:\\Program Files\\nodejs', process.env.PATH].filter(Boolean).join(';'),
     HOME: home

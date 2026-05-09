@@ -165,6 +165,16 @@ if (!config.mcp['sequential-thinking']) {
     config.mcp['sequential-thinking'] = { type: 'local', command: ['${NPX_BIN}', '-y', '@modelcontextprotocol/server-sequential-thinking'], enabled: true };
 }
 
+// — context7 MCP (remote docs lookup — set CONTEXT7_API_KEY env var) —
+if (!config.mcp.context7) {
+    config.mcp.context7 = { type: 'remote', url: 'https://mcp.context7.com/mcp', enabled: true, description: 'Fetches latest docs for libraries and frameworks' };
+}
+
+// — postgres MCP (disabled by default — enable + update connection string when needed) —
+if (!config.mcp.postgres) {
+    config.mcp.postgres = { type: 'local', command: ['${NPX_BIN}', '-y', '@modelcontextprotocol/server-postgres', 'postgresql://localhost:5432/mydb'], enabled: false };
+}
+
 // — Inject PATH + HOME into ALL local MCP entries —
 const defaultEnv = { PATH: '${NODE_BIN%/*}:/usr/local/bin:/usr/bin:/bin', HOME: '${HOME}' };
 for (const [key, val] of Object.entries(config.mcp)) {
