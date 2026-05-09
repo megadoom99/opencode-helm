@@ -50,6 +50,19 @@ The installer checks for these and warns if any are missing.
 └── opencode.json               # Deep-merged — existing config + HELM entries
 ```
 
+### MCP Servers Configured
+
+| MCP | Purpose |
+|-----|---------|
+| **socraticode** | Code indexing, semantic search, dependency graphs, impact analysis |
+| **crawl4ai** | Web crawling, markdown conversion, screenshots |
+| **github** | Repository operations (issues, PRs, commits) |
+| **searxng** | Privacy-respecting web search |
+| **filesystem** | Read/write/list file operations |
+| **sequential-thinking** | Multi-step reasoning for complex problems |
+
+All local MCPs are auto-configured with correct `PATH` and `HOME` environment variables so they work with OpenCode's desktop app.
+
 **Your existing `opencode.json` is never overwritten** — the installer deep-merges HELM entries into it.
 
 ## How To Use

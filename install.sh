@@ -135,14 +135,34 @@ try { config = JSON.parse(fs.readFileSync(path, 'utf-8')); } catch {}
 config['\$schema'] = 'https://opencode.ai/config.json';
 if (!config.mcp) config.mcp = {};
 
-// — socraticode MCP —
+// — socraticode MCP (code intelligence engine) —
 if (!config.mcp.socraticode) {
     config.mcp.socraticode = { type: 'local', command: ['${NPX_BIN}', '-y', 'socraticode'], enabled: true };
 }
 
-// — crawl4ai MCP —
+// — crawl4ai MCP (web crawling + markdown conversion) —
 if (!config.mcp.crawl4ai) {
     config.mcp.crawl4ai = { type: 'local', command: ['${NODE_BIN}', '${HOME}/Downloads/OpenCodeProjects/crawl4ai-mcp.js'], enabled: true };
+}
+
+// — github MCP (repository operations) —
+if (!config.mcp.github) {
+    config.mcp.github = { type: 'local', command: ['${NPX_BIN}', '-y', '@modelcontextprotocol/server-github'], enabled: true };
+}
+
+// — searxng MCP (privacy-respecting web search) —
+if (!config.mcp.searxng) {
+    config.mcp.searxng = { type: 'local', command: ['${NPX_BIN}', '-y', 'mcp-searxng'], enabled: true };
+}
+
+// — filesystem MCP (read/write/list file operations) —
+if (!config.mcp.filesystem) {
+    config.mcp.filesystem = { type: 'local', command: ['${NPX_BIN}', '-y', '@modelcontextprotocol/server-filesystem', '${HOME}/Downloads/OpenCodeProjects'], enabled: true };
+}
+
+// — sequential-thinking MCP (multi-step reasoning) —
+if (!config.mcp['sequential-thinking']) {
+    config.mcp['sequential-thinking'] = { type: 'local', command: ['${NPX_BIN}', '-y', '@modelcontextprotocol/server-sequential-thinking'], enabled: true };
 }
 
 // — Inject PATH + HOME into ALL local MCP entries —

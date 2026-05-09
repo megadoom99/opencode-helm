@@ -141,6 +141,22 @@ if (!config.mcp.crawl4ai) {
     config.mcp.crawl4ai = { type: 'local', command: [nodeBin, home + '/Downloads/OpenCodeProjects/crawl4ai-mcp.js'], enabled: true };
 }
 
+if (!config.mcp.github) {
+    config.mcp.github = { type: 'local', command: [npxBin, '-y', '@modelcontextprotocol/server-github'], enabled: true };
+}
+
+if (!config.mcp.searxng) {
+    config.mcp.searxng = { type: 'local', command: [npxBin, '-y', 'mcp-searxng'], enabled: true };
+}
+
+if (!config.mcp.filesystem) {
+    config.mcp.filesystem = { type: 'local', command: [npxBin, '-y', '@modelcontextprotocol/server-filesystem', home + '/Downloads/OpenCodeProjects'], enabled: true };
+}
+
+if (!config.mcp['sequential-thinking']) {
+    config.mcp['sequential-thinking'] = { type: 'local', command: [npxBin, '-y', '@modelcontextprotocol/server-sequential-thinking'], enabled: true };
+}
+
 const defaultEnv = {
     PATH: [npmDir, 'C:\\Program Files\\nodejs', process.env.PATH].filter(Boolean).join(';'),
     HOME: home
